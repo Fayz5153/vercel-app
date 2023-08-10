@@ -2,6 +2,7 @@ import React from 'react';
 import ContextMode, { MyContext } from './context/context';
 import Header from './pages/header';
 import Main from './pages/main';
+import { BoxLoading } from 'react-loadingg';
 
 const App = () => {
   return ( 
@@ -10,6 +11,7 @@ const App = () => {
         {(value)=>{
           return(
             <div>
+              <BoxLoading />
               <button onClick={value.handleTheme}>
                 Theme
                 </button>
