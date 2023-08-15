@@ -1,28 +1,32 @@
 import React from 'react';
 import ContextMode, { MyContext } from './context/context';
-import Header from './pages/header';
-import Main from './pages/main';
-import {Routes, Route, Link} from "react-router-dom"
+import HomePage from './pages/HomePage';
+import Category from './pages/Category';
+import {Routes, Route, Link, useNavigate} from "react-router-dom"
+import Search from './pages/Search';
 
 const App = () => {
+  let navigate = useNavigate()
   return ( 
     <ContextMode>
       <MyContext.Consumer>
         {(value)=>{
           return(
             <div>
-              <button onClick={value.handleTheme}>
-                Theme
-              </button>
-              <h1>{value.theme ? "theme dark" : "theme light"}</h1>
-              <div>
+              <div className='navbar'>
                 <Link to={"/"}>Home</Link>
                 <Link to={"/category/book"}>Book</Link>
                 <Link to={"/category/tv"}>Tv</Link>
+                
+                <div className="search">
+                  <input type="search" placeholder='Qidiruv...' onChange={(e)=> value.setWord(e.target.value)}/>
+                  <button onClick={()=> navigate("/search")}>Search</button>
+                </div>
               </div>
               <Routes>
-                <Route index element={<Header/>}/>
-                <Route path='category/:name' element={<Main value={value}/>}/>
+                <Route index element={<HomePage/>}/>
+                <Route path='category/:name' element={<Category/>}/>
+                <Route path='search' element={<Search/>}/>
               </Routes>
               
             </div>

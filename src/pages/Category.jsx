@@ -2,11 +2,12 @@ import React,{useState, useEffect} from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { WaveLoading } from 'react-loadingg';
+import { BASE_URL } from '../contains';
 
-const Main = () => {
+const Category = () => {
     let params = useParams().name
     // console.log(params)
-    let BASE_URL = "https://64d47322b592423e46942188.mockapi.io"
+    // let BASE_URL = "https://64d47322b592423e46942188.mockapi.io"
     const [data, setData]= useState([])
     const [load, setLoad]= useState(false)
 
@@ -40,4 +41,4 @@ const Main = () => {
      );
 }
  
-export default Main;
+export default Category;
